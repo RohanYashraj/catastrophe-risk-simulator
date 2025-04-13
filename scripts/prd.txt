@@ -1,0 +1,395 @@
+# Overview
+The Catastrophe Risk Simulator is a sophisticated analytics platform designed to model, simulate, and visualize low-frequency, high-severity catastrophic events. It enables organizations to better understand, prepare for, and mitigate risks associated with natural disasters, pandemics, cyber attacks, and financial market crashes. By providing detailed scenario analysis and impact assessments, this tool helps risk managers, insurance companies, government agencies, and corporate decision-makers develop more robust risk management strategies and contingency plans.
+
+# Core Features
+
+## Multi-Hazard Modeling
+- Comprehensive simulation of various catastrophe types including natural disasters (hurricanes, earthquakes, floods), pandemic scenarios, cyber risk events, and financial market crashes
+- Ability to model cascading effects and correlations between different hazard types
+- Customizable parameters for each hazard type to reflect specific regional or organizational contexts
+
+## Advanced Simulation Engine
+- Monte Carlo simulation capability to generate thousands of potential scenarios based on historical data and scientific models
+- Extreme value theory implementation to properly account for tail risk events
+- Bayesian network modeling to capture complex dependencies between risk factors
+- Ability to run sensitivity analyses by varying key parameters
+
+## Impact Assessment Framework
+- Financial loss modeling with breakdown by asset class, geography, and business unit
+- Population impact metrics including casualties, displacement, and public health effects
+- Infrastructure vulnerability analysis showing potential damage to critical systems
+- Supply chain disruption modeling to identify operational vulnerabilities
+- Solvency and liquidity stress testing for financial institutions
+
+## Visualization Dashboard
+- Interactive risk maps showing geographical distribution of hazards and impacts
+- Probability distribution charts for key metrics (loss amounts, recovery times)
+- Time-series visualizations showing event progression and cascading effects
+- Scenario comparison tools to evaluate alternative risk management strategies
+- Custom report generation with exportable data and visualizations
+
+## User Interface and Controls
+- Intuitive parameter adjustment controls for scenario customization
+- Scenario builder with templates for common catastrophe types
+- Ability to import historical event data and organizational asset information
+- Collaborative features allowing teams to work on scenarios together
+- User permission system with role-based access controls
+
+# User Experience
+
+## User Personas
+
+### Risk Manager (Primary User)
+- Responsible for identifying and managing organizational risks
+- Needs to quantify potential losses and justify mitigation investments
+- Uses the simulator to run scenarios relevant to their organization's specific risk profile
+- Values clear visualizations and reports that can be shared with executive leadership
+
+### Insurance Professional
+- Works with pricing and underwriting catastrophe risk policies
+- Needs to evaluate portfolio exposure and set appropriate premiums
+- Uses the simulator to understand tail risk and aggregate exposure
+- Values detailed loss modeling and portfolio analysis tools
+
+### Government Emergency Planner
+- Responsible for disaster preparedness and response planning
+- Needs to understand potential impacts on population and infrastructure
+- Uses the simulator to test response scenarios and resource allocation
+- Values population impact metrics and infrastructure vulnerability analysis
+
+### Corporate Executive
+- Makes strategic decisions about risk management investments
+- Needs high-level understanding of key risks and mitigation options
+- Uses simulator outputs (rather than direct interaction) for decision support
+- Values clear summary reports and cost-benefit analyses of risk mitigation options
+
+## Key User Flows
+
+### Scenario Creation and Configuration
+1. User selects catastrophe type from available models
+2. System presents relevant parameters with default values based on historical data
+3. User adjusts parameters to match their specific scenario requirements
+4. System validates parameter combinations for realism and consistency
+5. User saves the scenario configuration for future use or immediate simulation
+
+### Simulation Execution
+1. User selects one or more saved scenarios to run
+2. System displays estimated computation time and resources required
+3. User initiates simulation with desired number of iterations
+4. System provides real-time progress updates during computation
+5. Upon completion, system presents summary statistics and navigable results
+
+### Results Analysis
+1. User explores simulation results through interactive dashboard
+2. System provides multiple visualization options for different aspects of the results
+3. User can filter and drill down into specific sub-scenarios or impact types
+4. System allows comparison between multiple simulation runs
+5. User can export findings as reports or raw data for further analysis
+
+### Mitigation Strategy Testing
+1. User develops potential risk mitigation strategies
+2. System helps quantify strategy effectiveness through comparative simulation
+3. User adjusts strategies based on simulation feedback
+4. System calculates cost-benefit metrics for different approaches
+5. User can save and share optimal strategies with stakeholders
+
+## UI/UX Considerations
+- Clean, professional interface with emphasis on data clarity
+- Progressive disclosure of complexity - simple default views with access to advanced features
+- Consistent color coding for risk levels across all visualizations
+- Mobile-responsive design for dashboard viewing (though configuration primarily desktop-focused)
+- Accessibility compliance to ensure usability for all potential users
+- Streamlined workflows for common tasks to minimize learning curve
+- Comprehensive help system including tutorials and contextual guidance
+
+# Technical Architecture
+
+## System Components
+
+### Frontend Layer
+- Next.js framework with TypeScript for type safety and server-side rendering
+- React Query for state management and data fetching
+- D3.js for interactive data visualizations
+- shadcn UI component library for consistent design system
+- Progressive Web App capabilities for offline access to saved scenarios
+
+### Backend Services
+- FastAPI for RESTful API services
+- Python microservices for computation-intensive simulation processing
+- Supabase for authentication and authorization services
+- Report generation service
+
+### Simulation Engine
+- Core simulation logic implemented in Python using NumPy/SciPy
+- R integration for specialized statistical models
+- Distributed computing capability for large-scale simulations
+- Caching layer for repeated scenario parameters
+- Queuing system for managing multiple simulation requests
+
+### Data Layer
+- Supabase (PostgreSQL) for structured data storage and real-time subscriptions
+- Supabase storage for large files and simulation results
+- Redis for caching and pub/sub messaging
+- Time-series database for historical event data
+
+## Data Models
+
+### Catastrophe Models
+- Parameters specific to each catastrophe type
+- Probability distributions for frequency and severity
+- Correlation matrices between related factors
+- Historical event databases for calibration
+
+### Organization Assets
+- Physical asset registry with locations, values, and vulnerabilities
+- Human resource distribution and characteristics
+- Supply chain network relationships
+- Financial position and portfolio composition
+
+### Simulation Results
+- Raw simulation outputs with multiple iterations
+- Aggregated statistics and confidence intervals
+- Impact measurements across different dimensions
+- Mitigation effectiveness metrics
+
+### User Data
+- Authentication and permission information
+- Saved scenarios and preferences
+- Organization-specific configurations
+- Usage analytics for system improvement
+
+## APIs and Integrations
+
+### External Data Sources
+- Weather and climate data APIs
+- Geological survey data sources
+- Epidemiological databases
+- Financial market data feeds
+- Cyber threat intelligence sources
+
+### Export/Import Interfaces
+- CSV/Excel data import capabilities
+- PDF report generation
+- API endpoints for integration with risk management systems
+- GIS data interchange formats
+
+### Integration Points
+- Supabase authentication integration
+- Webhooks for notification systems
+- Integration with asset management databases
+- Connection to business intelligence tools
+
+## Infrastructure Requirements
+
+### Compute Resources
+- Cloud-based deployment with auto-scaling capabilities
+- GPU acceleration for complex simulations
+- Dedicated high-memory instances for large-scale Monte Carlo runs
+- Serverless functions for sporadic processing needs
+
+### Storage
+- Relational database for user and configuration data
+- Object storage for large simulation results
+- In-memory database for high-speed access to active simulations
+- Cold storage for historical simulation archives
+
+### Security Measures
+- End-to-end encryption for all data transmission
+- Role-based access controls
+- Regular security audits and penetration testing
+- Compliance with relevant data protection regulations
+
+### Monitoring and Operations
+- Comprehensive logging and monitoring system
+- Automated alerts for system issues
+- Backup and disaster recovery procedures
+- Performance tracking for optimization
+
+# Development Roadmap
+
+## Phase 1: Foundation and MVP
+- Basic user authentication and profile management
+- Initial database schema implementation
+- Single catastrophe type modeling (start with natural disasters)
+- Simple Monte Carlo simulation engine
+- Basic visualization dashboard with limited interactivity
+- Standard parameter adjustment interface
+- Fundamental impact metrics (financial losses, basic population impacts)
+- Simple export functionality for reports
+- Core API endpoints for simulation control
+
+## Phase 2: Expanded Modeling Capabilities
+- Add additional catastrophe types (pandemic, cyber)
+- Implement correlation modeling between risk factors
+- Enhance simulation engine with extreme value theory
+- Develop more sophisticated financial loss models
+- Add infrastructure vulnerability assessment
+- Improve visualization with interactive maps
+- Implement scenario saving and comparison features
+- Develop more detailed report templates
+
+## Phase 3: Advanced Analytics and Collaboration
+- Implement Bayesian network modeling for complex dependencies
+- Add supply chain disruption modeling
+- Develop sensitivity analysis tooling
+- Create scenario templates library
+- Add collaborative features for team-based analysis
+- Implement advanced filtering and drill-down capabilities
+- Develop custom dashboard creation tools
+- Add API endpoints for third-party integration
+
+## Phase 4: Enterprise Features and Optimization
+- Implement role-based access control system
+- Add enterprise SSO integration
+- Develop audit trails for regulatory compliance
+- Optimize simulation engine for performance
+- Implement distributed computing for large simulations
+- Add advanced data import/export capabilities
+- Develop custom model extension framework
+- Create comprehensive help and training system
+
+## Phase 5: Specialized Modules and Intelligence
+- Add AI-powered scenario suggestion features
+- Implement real-time data feeds from external sources
+- Develop specialized industry-specific modules
+- Create adaptive learning capabilities based on user feedback
+- Implement predictive analytics for emerging risks
+- Add augmented reality visualization options
+- Develop mobile companion app for alerts and monitoring
+- Create marketplace for third-party model extensions
+
+# Logical Dependency Chain
+
+## Foundation First
+1. User authentication and database infrastructure
+2. Core simulation engine with basic Monte Carlo capabilities
+3. Single catastrophe type modeling (natural disaster)
+4. Simple parameter configuration interface
+5. Basic visualization components
+
+## Building the Functional MVP
+1. Complete the natural disaster modeling with configurable parameters
+2. Implement basic financial impact assessment
+3. Develop interactive dashboard with fundamental visualizations
+4. Create simple report generation
+5. Implement scenario saving and loading
+
+## Expanding to Multiple Hazard Types
+1. Add pandemic modeling capabilities
+2. Implement cyber risk simulation
+3. Develop financial market crash scenarios
+4. Create correlation modeling between different hazard types
+5. Enhance visualization to support multiple hazard comparisons
+
+## Enhancing Analytics Capabilities
+1. Implement advanced statistical models (extreme value theory)
+2. Develop sensitivity analysis tools
+3. Add scenario comparison features
+4. Enhance reporting with more detailed metrics
+5. Implement data import from external sources
+
+## Enterprise Integration and Scaling
+1. Develop role-based access control
+2. Implement collaborative features
+3. Add API endpoints for system integration
+4. Optimize for performance with larger simulations
+5. Implement advanced security features
+
+## Continuous Improvement Path
+1. Each catastrophe type can be independently enhanced
+2. Visualization capabilities can be progressively improved
+3. New impact metrics can be added modularly
+4. UI refinements can be implemented throughout development
+5. Performance optimizations can be applied incrementally
+
+# Risks and Mitigations
+
+## Technical Challenges
+
+### Computational Intensity
+- **Risk**: Complex simulations may require excessive computational resources
+- **Mitigation**: Implement distributed computing architecture, optimize algorithms, use sampling techniques for preliminary results
+
+### Statistical Accuracy
+- **Risk**: Models may not accurately reflect real-world catastrophe behaviors
+- **Mitigation**: Calibrate with historical data, involve domain experts in model development, implement uncertainty quantification
+
+### Data Visualization Complexity
+- **Risk**: Visualizing multi-dimensional risk data may become overwhelming
+- **Mitigation**: Use progressive disclosure techniques, implement guided analytics, create customizable visualization options
+
+### Integration Complexity
+- **Risk**: Connecting to diverse external data sources may be challenging
+- **Mitigation**: Create abstraction layers, develop flexible API adapters, implement robust error handling
+
+## MVP Scoping Challenges
+
+### Feature Prioritization
+- **Risk**: Difficulty determining essential vs. nice-to-have features
+- **Mitigation**: Focus on core simulation capabilities and basic visualizations first, obtain early user feedback, implement modular architecture
+
+### Domain Complexity
+- **Risk**: Each catastrophe type requires specialized domain knowledge
+- **Mitigation**: Start with one well-understood catastrophe type, establish extensible framework, bring in domain experts as needed
+
+### User Expertise Requirements
+- **Risk**: System may be too complex for non-technical users
+- **Mitigation**: Create guided workflows, implement sensible defaults, provide extensive help resources
+
+### Performance Expectations
+- **Risk**: Users may expect real-time results for complex simulations
+- **Mitigation**: Implement progressive result display, set clear expectations, optimize critical paths
+
+## Resource Constraints
+
+### Development Expertise
+- **Risk**: Need for diverse expertise (statistics, domain knowledge, development)
+- **Mitigation**: Modular development approach, prioritize hiring for critical gaps, leverage open-source components where appropriate
+
+### Testing Complexity
+- **Risk**: Validating simulation accuracy is challenging
+- **Mitigation**: Develop comprehensive test suites, compare with historical events, implement scenario-based testing
+
+### Ongoing Maintenance
+- **Risk**: Models require continuous updates as new research emerges
+- **Mitigation**: Design for extensibility, implement plugin architecture, establish update processes
+
+### User Adoption
+- **Risk**: Complex tool may face adoption challenges
+- **Mitigation**: Focus on user experience, develop training resources, gather and implement user feedback
+
+# Appendix
+
+## Research Findings
+
+### Catastrophe Modeling Approaches
+- Academic literature review of current modeling methodologies
+- Comparison of statistical approaches (extreme value theory, Bayesian methods)
+- Industry standard practices in insurance and risk management
+- Open challenges in catastrophe modeling
+
+### User Research
+- Interviews with potential users across different sectors
+- Common pain points in current risk assessment approaches
+- Feature prioritization based on user feedback
+- Workflow analysis for different user types
+
+## Technical Specifications
+
+### Data Sources
+- List of potential data providers for different catastrophe types
+- Data format specifications and update frequencies
+- Quality assessment of various sources
+- Integration requirements for each source
+
+### Performance Requirements
+- Expected response times for different operations
+- Scalability requirements for concurrent users
+- Storage requirements for simulation results
+- Computational resource estimates for different simulation types
+
+### Compliance Considerations
+- Relevant regulatory requirements by industry and region
+- Data privacy considerations for user and organizational data
+- Audit trail requirements for regulated industries
+- Accessibility compliance requirements 
